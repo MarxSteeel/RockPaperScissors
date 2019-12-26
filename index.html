@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="utf-8">
+		<title>Rock Paper Scissors</title>
+	</head>
+	
+	<body>
+		<script>
+			function computerPlay() {
+				let num = Math.floor((Math.random() * 3) + 1);
+				if (num == 1) {
+					return "rock";
+				} else if (num == 2) {
+					return "paper";
+				} else if (num == 3) {
+					return "scissors";
+				}
+			}
+
+			function playRound(playerSelection, computerSelection) {
+				let player = playerSelection.toLowerCase()
+				if (player == computerSelection) {
+					return "It's a draw";
+				} else if (player == "rock") {
+					if (computerSelection == "paper") {
+						return "You lose!";
+					} else if (computerSelection == "scissors") {
+						return "You win!";
+					}
+				} else if (player == "paper") {
+					if (computerSelection == "scissors") {
+						return "You lose!";
+					} else if (computerSelection == "rock") {
+						return "You win!";
+					}
+				} else if (player == "scissors") {
+					if (computerSelection == "rock") {
+						return "You lose!";
+					} else if (computerSelection == "paper") {
+						return "You win!";
+					}
+				}
+			}
+
+			function game() {
+				let i = 0;
+				let playerWins = 0;
+				let computerWins = 0;
+				while (i < 5) {
+					let player = prompt("What will you play?")
+					let play = playRound(player, computerPlay())
+					if (play == "It's a draw") {
+						// console.log("It's a draw")
+						i++;
+					} else if (play == "You win!") {
+						// console.log("You win!")
+						playerWins++;
+						i++;
+					} else if (play == "You lose!") {
+						// console.log("You lose!")
+						computerWins++;
+						i++;
+					}
+				} if (playerWins > computerWins) {
+						return "You won the match!";
+				} else if (playerWins < computerWins) {
+						return "You lost the match";
+				}
+			}
+		</script>	
+	</body>
+</html>
